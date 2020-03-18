@@ -1,6 +1,6 @@
 package listasTipoCola;
 
-public class Cola {
+public class Cola02 {
 
 	class Nodo {
 		int info;
@@ -9,7 +9,7 @@ public class Cola {
 	
 	private Nodo raiz, fondo;
 	
-	Cola() {
+	Cola02() {
 		raiz = null;
 		fondo = null;
 	}
@@ -27,11 +27,11 @@ public class Cola {
 		nuevo.info = info;
 		nuevo.sig = null;
 		if (vacia()) {
-			raiz = nuevo;
-			fondo = nuevo;
+			nuevo = raiz;
+			nuevo = fondo; 
 		} else {
-			fondo.sig = nuevo;
-			fondo = nuevo;
+			nuevo = fondo.sig;
+			nuevo = fondo;			
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class Cola {
 			return informacion;
 		} else {
 			return Integer.MAX_VALUE;
-		}
+		}		
 	}
 	
 	public void imprimir() {
@@ -57,15 +57,16 @@ public class Cola {
 			System.out.println(recorrer.info + "; ");
 			recorrer = recorrer.sig;
 		}
+		System.out.println();
 	}
 	
-	public static void main(String[] args) {
-		Cola cola1 = new Cola();
-		cola1.insertar(5);
-		cola1.insertar(10);
-		cola1.insertar(50);
-		cola1.imprimir();
-		System.out.println("Extraemos uno de la cola: " + cola1.extraer());
-		cola1.imprimir();
+	public int cantidad() {
+		int cant = 0;
+		Nodo recorrer = raiz;
+		while (recorrer != null) {
+			cant++;
+			recorrer = recorrer.sig;
+		}
+		return cant;
 	}
 }

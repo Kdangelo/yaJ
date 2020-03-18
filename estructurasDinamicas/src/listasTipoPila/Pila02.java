@@ -39,7 +39,7 @@ public class Pila02 {
 		Nodo recorrer = raiz;
 		System.out.println("Listado de todos los elementos de la pila.");
 		while (recorrer != null) {
-			System.out.print(recorrer.info + "; ");
+			System.out.println(recorrer.info + "; ");
 			recorrer = recorrer.sig;
 		}
 		System.out.println();
@@ -53,13 +53,23 @@ public class Pila02 {
 		}
 	}
 	
+	public int cantidad() {
+		int cant = 0;
+		Nodo recorrer = raiz;
+		while (recorrer != null) {
+			cant++;
+			recorrer = recorrer.sig;
+		}
+		return cant;
+	}
+	
 	public static void main(String[] args) {
 		Pila02 pila1 = new Pila02();
 		pila1.insertar(10);
         pila1.insertar(20);
         pila1.insertar(30);
         pila1.imprimir();
-        //System.out.println("La cantidad de nodos en la lista es: " + pila1.cantidad());
+        System.out.println("La cantidad de nodos en la lista es: " + pila1.cantidad());
         while (pila1.vacia() == false) {
         	System.out.println(pila1.extraer());
         }
